@@ -1,0 +1,26 @@
+version: "3"
+services:
+  influxdb:
+    image: influxdb:1.8.10
+    container_name: influxdb
+    ports:
+      - 8086:8086
+    environment:
+      - INFLUXDB_ADMIN_USER_PASSWORD=moondd!
+      - INFLUXDB_USER=moon
+      - INFLUXDB_USER_PASSWORD=moondd!
+      - INFLUXDB_HTTP_AUTH_ENABLED=false
+      - INFLUXDB_DB=log
+    restart: always
+    volumes:
+      - /var/lib/influxdb
+  rabbitmq:
+    image: 'rabbitmq:3.9.27-management'
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "RabbitMQ-My-Cookies"
+      RABBITMQ_DEFAULT_USER: "moon"
+      RABBITMQ_DEFAULT_PASS: "moondd!"
