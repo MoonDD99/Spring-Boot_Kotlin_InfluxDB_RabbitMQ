@@ -36,10 +36,13 @@ class MySQLDataSourceConfig(
     @Bean("mysqlEntityManagerFactory")
     @Primary
     fun mysqlEntityManagerFactory(builder: EntityManagerFactoryBuilder): LocalContainerEntityManagerFactoryBean{
+        val properties = HashMap<String, Any?>()
+        properties["hibernate.hbm2ddl.auto"] = env.getProperty("spring.jpa.hibernate.ddl-auto")
         return builder
             .dataSource(mysqlDataSource())
-            .packages("com.example.kotlin_influxdb")
-            .persistenceUnit("users")
+            .packages("com.example.kotlin_influxdb.entity.mysql")
+            .properties(properties)
+            .persistenceUnit("mysql")
             .build()
     }
 
