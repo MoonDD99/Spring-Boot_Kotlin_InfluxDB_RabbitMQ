@@ -1,7 +1,9 @@
 # Spring-Boot_Kotlin_InfluxDB_RabbitMQ
 ### 프로젝트 설명
 
-Device에 요청을 보내거나 받을때마다 로그를 저장하기 위해서 해당 로그를 InfluxDB에 저장하는 프로젝트
+Device에 제어 요청을 보내거나 받을때마다 로그를 저장하기 위해서 해당 로그를 InfluxDB에 저장하는 프로젝트
+
+해당 프로젝트는 **로그를 InfluxDB에 저장하는 것을 목표**로 하고 있기에 Device 즉 IoT를 따로 제어하는 기능은 따로 구현하지 않는다.
 
 ### 발견한 문제
 
