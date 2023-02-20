@@ -4,7 +4,7 @@ services:
     image: influxdb:1.8.10
     container_name: influxdb
     ports:
-      - 8086:8086
+      - "8086:8086"
     environment:
       - INFLUXDB_ADMIN_USER_PASSWORD=moondd!
       - INFLUXDB_USER=moon
@@ -14,6 +14,20 @@ services:
     restart: always
     volumes:
       - /var/lib/influxdb
+  influxdb2:
+    image: influxdb:2.5
+    container_name: influxdb2
+    ports:
+      - "8086:8086"
+    environment:
+      - DOCKER_INFLUXDB_INIT_USERNAME=moon
+      - DOCKER_INFLUXDB_INIT_PASSWORD=moondodo
+      - DOCKER_INFLUXDB_INIT_ORG=org
+      - DOCKER_INFLUXDB_INIT_BUCKET=log
+      - INFLUXDB_DB=log
+    restart: always
+    volumes:
+      - /var/lib/influxdb2
   rabbitmq:
     image: 'rabbitmq:3.9.27-management'
     container_name: rabbitmq
