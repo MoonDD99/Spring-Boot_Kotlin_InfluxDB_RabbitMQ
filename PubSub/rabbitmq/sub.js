@@ -1,10 +1,10 @@
 const amqp = require("amqplib");
-var rabbitMQConfig = require("../config/rabbitMQConfig.json");
+var connectConfig = require("../config/connectConfig.json");
 
 class Sub {
     constructor(){
         //객체 초기화
-        this._url = rabbitMQConfig.url;
+        this._url = connectConfig.url;
 
         this.channel = undefined;
     }
