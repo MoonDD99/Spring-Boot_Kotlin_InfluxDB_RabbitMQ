@@ -1,12 +1,12 @@
 const Pub = require("../rabbitmq/pub");
 const Sub = require("../rabbitmq/sub");
-var rabbitMQConfig = require("../config/rabbitMQConfig.json")
+var rabbitMQConfig = require("../config/rabbitMQConfig.json");
 
 module.exports = {
     publish : async (id, status) => {
         try{
             const connection = new Pub();
-            const exchangName = rabbitMQConfig.topic + `${id}`;
+            const exchangName = rabbitMQConfig.exchange;
             const message = {
                 "id": id ,
                 "status": status
