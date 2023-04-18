@@ -10,14 +10,21 @@ class Pub {
 
     //커넥트 생성하고 채널 연결
     async setUp(){
-        const connect = await amqp.connect(this._url);
+        console.log("ffd", msg);
+        const connect = await amqp.connect(this._url, username="moon", password="moondd!");
+        if (connect){
+            console.log("Success", msg);
+        }else {
+            console.log("Fail", msg);
+        }
         const channel = await connect.createChannel();
         this.channel = channel;
-        //console.log(connect);
+        console.log(connect);
     }
 
     //exchange에 msg를 publish
     async publishToExchange(exchangeName, msg){
+        console.log("ff", msg);
         await this.setUp();
         let success = this.channel.publish(exchangeName, '', Buffer.from(JSON.stringify(msg)));
         if (success){
