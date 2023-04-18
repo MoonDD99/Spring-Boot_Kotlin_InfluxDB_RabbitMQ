@@ -1,9 +1,10 @@
 const amqp = require("amqplib");
+var rabbitMQConfig = require("../config/rabbitMQConfig.json");
 
 class Sub {
     constructor(){
         //객체 초기화
-        this._url = "amqp://localhost:5672";
+        this._url = rabbitMQConfig.url;
 
         this.channel = undefined;
     }
@@ -36,12 +37,6 @@ class Sub {
 
             }
         });
-        
-        if(msg.content){
-            const jsonData = JSON.parse(msg.content.toString());
-            this.channel.ack(msg);
-            console.log("id : " + jsonData['id'] + " status : " + jsonData['status']);
-        }
     }
 
     }
